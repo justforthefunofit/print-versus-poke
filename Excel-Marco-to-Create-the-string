@@ -1,0 +1,52 @@
+Sub CreateSpriteString()
+Dim strSprite As String
+Dim r, c As Integer
+Dim f18, f146 As Boolean
+Dim StartColumn, StartRow As Integer
+Dim rows As Integer
+Dim Cval As Integer
+Dim cCount As Integer
+
+ rows = 21
+ f18 = False
+ f146 = False
+ StartColumn = 29
+ StartRow = 7
+ cCount = 0
+ With Worksheets("SpriteCreator")
+   For r = 1 To 21
+    For c = 1 To 6
+      Cval = .Cells(6 + r, 32 + c)
+      
+      If Cval <> 18 And Cval <> 146 Then
+         strSprite = strSprite & "{" & Cval & "}"
+         cCount = cCount + 1
+      Else
+      If (Cval = 18 Or Cval = 146) And f18 = False And f146 = False Then
+         strSprite = strSprite & "{" & Cval & "}"
+         cCount = cCount + 1
+         If Cval = 146 Then f146 = True Else f18 = True
+      Else
+       If Cval = 18 And f146 = True Then
+            strSprite = strSprite & "{" & Cval & "}"
+            cCount = cCount + 1
+            f146 = False
+            f18 = True
+       Else
+         If Cval = 146 And f146 = False Then
+             strSprite = strSprite & "{" & Cval & "}"
+             cCount = cCount + 1
+            f146 = True
+            f18 = False
+         End If
+       End If
+    End If
+    End If
+    Next c
+   Next r
+   .Cells(39, "AG").Value = strSprite
+   .Cells(42, "AD").Value = cCount
+ End With
+ 
+ Debug.Print strSprite
+End Sub
