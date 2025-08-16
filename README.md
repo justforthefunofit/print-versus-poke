@@ -46,9 +46,9 @@ This will not give you the same result, problem here is that the PETSCII charact
 - Inverse on value: chr$(18)
 
 So, let’s see what will happen with the values if we use inverse
-
-<img width="579" height="399" alt="image" src="https://github.com/user-attachments/assets/a7e7f26c-0630-45b4-9858-e6a2e272a617" />
-
+<p align="center">
+<img max-width="50%" height="auto" alt="image"  src="https://github.com/user-attachments/assets/a7e7f26c-0630-45b4-9858-e6a2e272a617" />
+</p>
 # Explanation:
 - line 10 - clear the screen using chr$(147)
 - line 20 - use chr$(18) to set inverse on and print the "@ABCD " values in inverse
@@ -111,7 +111,9 @@ Let see how we can show that in a Basic program. Create the following program to
 ```
 # result on execution
 
-<img width="645" height="448" alt="image" src="https://github.com/user-attachments/assets/ab3f211e-7c88-4b0a-b04c-f4b58ad67fee" />
+<p align="center">
+<img max-width="50%" height="auto"  alt="image" src="https://github.com/user-attachments/assets/ab3f211e-7c88-4b0a-b04c-f4b58ad67fee" />
+</p>
 
 This now opens opportunities to use the print command instead of using the poke command. Using print, we can combine values in a string and then print them. This has a few advantages.
 -	One we can create the string which save computing memory and execution time (no need to read of use data statements)
@@ -138,9 +140,14 @@ After we run this program initially nothing seems to happen. But lets print the 
 ```Basic
 ?chr$(147)+s$
 ```
-<img width="758" height="102" alt="image" src="https://github.com/user-attachments/assets/e828ead2-3d74-44f4-b57f-48aa8c0f511a" />
+<p align="center">
+<img max-width="50%" height="auto" alt="image" src="https://github.com/user-attachments/assets/e828ead2-3d74-44f4-b57f-48aa8c0f511a" />
+</p>
+
 It then will instantly show the following sprite 
-<img width="747" height="514" alt="image" src="https://github.com/user-attachments/assets/87b34f33-c749-4c6e-a93e-d629762060f0" />
+<p align="center">
+<img max-width="50%" height="auto" alt="image" src="https://github.com/user-attachments/assets/87b34f33-c749-4c6e-a93e-d629762060f0" />
+</p>
 
 # Solving the memory starting adress
 We can make this a bit more useful if we also make use of the Vic’s capability to move the screen memory. So we move the memory, print the sprites into that area and then move the screen memory pointers back to the original location. 
@@ -180,8 +187,17 @@ Ok now we have learned how to use the chr$ values to get the correct byte values
 710 poke 53272,(peek(53272)and15)or16:rem restore screen location
 ```
 # Result
-<img width="624" height="428" alt="image" src="https://github.com/user-attachments/assets/19170b0e-45e1-48b3-98e3-181461d2bc00" />
+<p align="center">
+<img max-width="50%" height="auto" alt="image" src="https://github.com/user-attachments/assets/19170b0e-45e1-48b3-98e3-181461d2bc00" />
+</p>
 
+# Creating the print string
+Figuring out which characters to use in a print string can be quite a chore. So I tweaked that Excel sheet I showed in an earlier video to generate the strings for you. You can then drop them straight into a BASIC editor, like CBM Prg Studio, and you’re ready to go.
+<p align="center">
+<img max-width="50%" height="auto" alt="image" src="https://github.com/user-attachments/assets/247adba3-7747-468d-9f80-bb76b69206c6" />
+</p>
+
+> **Note** You can find this Excel also here on github. It used a visual basic macro so you might have to adjust the security settings to enable that. The visual basic macro can also be fount as a text document there
 
 ## Status
 
